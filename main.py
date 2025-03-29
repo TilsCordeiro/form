@@ -8,9 +8,10 @@ templates = Jinja2Templates(directory="templates") #define que os arquivos HTML 
 
 @app.get("/", response_class=HTMLResponse)
 async def form(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request, "media": None})
+    return templates.TemplateResponse("index.html", {"request": request, "media": None, "mensagem":None})
 
 @app.post("/calcular")
 async def calcular_media(request: Request, nota1: float = Form(...), nota2: float = Form(...)):
     media = (nota1 + nota2) / 2
-    return templates.TemplateResponse("index.html", {"request": request, "media": media})
+    mensagem = "Parabéns! Você foi aprovado!" if media > 7 else "Estude mais, precisa melhorar!"
+    return templates.TemplateResponse("index.html", {"request": request, "media": media, "mensagem": mensagem})

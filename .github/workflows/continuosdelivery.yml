@@ -22,7 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: deliver
     steps:
-      steps:
         - uses: actions/download-artifact@v4
           with:
             name: projetozipado.zip

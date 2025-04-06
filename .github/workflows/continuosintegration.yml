@@ -1,36 +1,18 @@
-name: Continuos Integration
+name: Continuous Integration
+
 on:
   pull_request:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
+      - name: Checkout
         uses: actions/checkout@v4
-      - name: Python Lint Code Scanning Action
+
+      - name: Lint com pylint
         uses: advanced-security/python-lint-code-scanning-action@v1.1.2
         with:
           linter: pylint
-
-  docker:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v4
-      -
-        # Add support for more platforms with QEMU (optional)
-        # https://github.com/docker/setup-qemu-action
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Build
-        uses: docker/build-push-action@v6
-        with:
-          push: false
-          tags: user/app:latest

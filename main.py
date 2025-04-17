@@ -13,10 +13,5 @@ async def form(request: Request):
 @app.post("/calcular")
 async def calcular_media(request: Request, nota1: float = Form(...), nota2: float = Form(...)):
     media = (nota1 + nota2) / 2
-
-
-
     mensagem = "Parabéns! Você foi aprovado!" if media > 7 else "Aluno reprovado."
-    main
-
     return templates.TemplateResponse("index.html", {"request": request, "media": media, "mensagem": mensagem})

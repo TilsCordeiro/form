@@ -41,9 +41,10 @@ discord:
   steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Send notification to Discord
-      uses: Ilshidur/action-discord@master
+    - name: Run Discord Webhook
+      uses: Sniddl/discord-commits@v1.6
       with:
-        args: "✅ Pull Request criada e pipeline finalizada com sucesso!"
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        template: "avatar-with-link"
+        include-extras: true

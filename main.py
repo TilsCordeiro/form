@@ -15,6 +15,6 @@ async def calcular_media(request: Request, nota1: float = Form(...), nota2: floa
     media = (nota1 + nota2) / 2
 
 
-    mensagem = "Parabéns! Você foi aprovado!" if media > 7 else "Estude mais, você reprovou!!!"
+    mensagem = "Parabéns! Você foi aprovado!" if media > 7 else "Aluno reprovado."
 
     return templates.TemplateResponse("index.html", {"request": request, "media": media, "mensagem": mensagem})

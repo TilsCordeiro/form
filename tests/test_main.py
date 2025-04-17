@@ -7,6 +7,8 @@ def test_formulario_get():
     response = client.get("/")
     assert response.status_code == 200
     assert "<form" in response.text
+    assert "name=\"nota1\"" in response.text
+    assert "name=\"nota2\"" in response.text
 
 def test_calcular_media_aprovado():
     response = client.post("/calcular", data={"nota1": 8, "nota2": 9})

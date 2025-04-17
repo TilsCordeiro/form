@@ -41,5 +41,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Send Discord notification
         uses: Ilshidur/action-discord@master
-        with:
+        env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}

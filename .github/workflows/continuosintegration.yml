@@ -40,7 +40,7 @@ jobs:
     needs: [docker]
     steps:
       - uses: actions/checkout@v4
-      - name: discord-webhook
-        uses: johnnyhuy/actions-discord-git-webhook@v1.0.4
+      - name: Send Discord notification
+        uses: Ilshidur/action-discord@master
         with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
